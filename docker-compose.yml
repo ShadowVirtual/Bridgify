@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  bridgify:
+    image: 'scarletjean/bridgify:latest'
+    container_name: bridgify
+    restart: unless-stopped
+    environment:
+      - 'botToken=${botToken}'
+      - 'mongoDB=${mongoDB}'
+      - 'CLIENT_ID=${CLIENT_ID}'
+      - 'TOPGG_TOKEN=${TOPGG_TOKEN}'
+      - 'VERSION=${VERSION}'
+    volumes:
+      - './data:/app/data'
+    networks:
+      - bridgify-network
+networks:
+  bridgify-network:
+    driver: bridge
